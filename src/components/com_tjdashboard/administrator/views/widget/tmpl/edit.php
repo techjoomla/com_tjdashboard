@@ -87,6 +87,7 @@ JFactory::getDocument()->addScriptDeclaration('
 						echo $this->form->getInput('modified_by');
 						echo $this->form->getInput('checked_out');
 						echo $this->form->getInput('checked_out_time');
+						echo $this->form->getInput('dashboard_widget_id');
 						?>
 				</fieldset>
 			</div>

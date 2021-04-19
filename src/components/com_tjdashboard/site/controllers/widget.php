@@ -72,9 +72,9 @@ class TjDashboardControllerWidget extends JControllerForm
 			$app          = JFactory::getApplication();
 			$jinput       = $app->input;
 			$pluginName   = $jinput->post->get('pluginName', '', 'string');
-
+			$widgetId     = $jinput->post->get('widgetId', '', 'INT');
 			$model 		  = $this->getModel('Widget');
-			$paramsObject = $model->getWidgetParams($pluginName);
+			$paramsObject = $model->getWidgetParams($pluginName, $widgetId);
 			echo new JResponseJson($paramsObject);
 			jexit();
 		}

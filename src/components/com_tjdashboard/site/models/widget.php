@@ -136,14 +136,15 @@ class TjdashboardModelWidget extends JModelAdmin
 	/**
 	 * Method to to get the params of respective data source
 	 *
-	 * @param   string  $pluginName  The plugin name
+	 * @param   string  $pluginName  The plugin name 
+	 * @param   string  $widgetId    widget id
 	 * 
 	 * @return string
 	 *
 	 * @throws Exception
 	 * @since 1.0.0
 	 */
-	public function getWidgetParams($pluginName)
+	public function getWidgetParams($pluginName, $widgetId = null)
 	{
 		// Initialize variables.
 		$db    = $this->getDbo();
@@ -152,6 +153,12 @@ class TjdashboardModelWidget extends JModelAdmin
 		// Create the base select statement.
 		$query->select($db->quoteName('params'));
 		$query->from($db->quoteName('#__tj_dashboard_widgets'));
+
+		if ($widgetId)
+		{
+			$query->where($db->quoteName('dashboard_widget_id') . ' = ' . (int) $widgetId);
+		}
+
 		$query->where($db->quoteName('data_plugin') . ' = ' . $db->q($pluginName));
 		$query->where($db->quoteName('params') . ' <> "" ');
 		$query->limit(1);

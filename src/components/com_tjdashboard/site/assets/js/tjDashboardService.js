@@ -47,10 +47,11 @@ var TJDashboardService = {
 		return this.postData(root_url + this.get_renderers_url, params, formData);
 	},
 
-	getWidgetParams : function (selectedDataPlugin) {
+	getWidgetParams : function (selectedDataPlugin,widgetId) {
 		var formData = {};
 		var params = {};
 		formData.pluginName = selectedDataPlugin;
+		formData.widgetId   = widgetId;
 		/** global: root_url */
 		return this.postData(root_url + this.get_widget_params, params, formData);		
 	}

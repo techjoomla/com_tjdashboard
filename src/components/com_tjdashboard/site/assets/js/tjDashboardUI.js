@@ -215,7 +215,8 @@ var TJDashboardUI = {
 			jQuery('#jform_renderer_plugin').val(defaultValue);
 		});
 
-		var promiseParams = TJDashboardService.getWidgetParams(selectedDataPlugin);
+		var widgetId      = jQuery('#jform_dashboard_widget_id').val();
+		var promiseParams = TJDashboardService.getWidgetParams(selectedDataPlugin,widgetId);
 		promiseParams.done(function(response) {
 			jQuery('#jform_params').val(response.data);
 		});
